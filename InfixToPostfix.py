@@ -98,6 +98,9 @@ def syntax_check(exp):
 # ESTO CON EL OBJETIVO DE AHORRAR TIEMPO DE EJECUCIÓN SIENDO QUE LOS SÍMBOLOS	
 # ABREVIADOS, SIENDO UNARIOS, SON MÁS FÁCILES DE IDENTIFICAR QUE LOS OPERADORES
 # BINARIOS
+
+# Caso 1: No alimentarle las entradas necesarias a los operadores unarios y binarios
+# Caso 2: Alimentarle a un operador binario una entrada que no sea un símbolo o un paréntesis o un operador binario
 def grammar_check(exp):
     pass
     
@@ -147,6 +150,7 @@ def InfixToPostfix(exp):
     exp = trans(exp)
     if parenthesis_check(exp):
         exp = readExp(exp)
+        print(exp)
         OpStack = []
         postfix = []
         for e in exp:
@@ -167,8 +171,8 @@ def InfixToPostfix(exp):
                     OpStack.append(e)
         while len(OpStack) > 0:
             postfix.append(OpStack.pop())
-        #postfix.append('#')
-        #postfix.append('.')
+        postfix.append('#')
+        postfix.append('.')
         exp_postfix = ''.join(postfix)
         return exp_postfix
     else:
@@ -180,10 +184,11 @@ def InfixToPostfix(exp):
 # exp = 'a|b'
 # exp = 'a|b|c'
 # exp = '(a|b)*'s
-#exp = '(a|b)*c'
+exp = '(a|b)*c'
 # exp = '(a|b*)**cd'
 #exp  = 'a**b*c|d'
 
+#exp = '(a|b)*abb(a|b)*'
 
 # expresiones regulares de prueba válidas en forma abreviada
 #exp = 'a*b?**c+'
@@ -194,6 +199,8 @@ exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 #exp = '(a?|b+)***c**'
 #exp = '(a|b+)+'
 #exp = '(a***|b****)***'
+#exp = '(a|b)*abb'
+
 
 # expresiones regulares de prueba inválidas
 #exp = ')a|b('
@@ -213,7 +220,10 @@ exp = list(exp)
 syntactic_tree = buildTree(exp.pop(), exp)
 #
 print('Árbol sintáctico: ', syntactic_tree)
-syntactic_tree.traversePostOrder()
+print(syntactic_tree.traversePostOrder())
+#syntactic_tree.post2()
+#syntactic_tree.determineFollowPos()
+#syntactic_tree.post3()
 #
 ##print('Expresión regular 2: ', InfixToPostfix(exp))
 #

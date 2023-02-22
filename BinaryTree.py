@@ -84,6 +84,7 @@ class Node:
         if self.val == '#':
             self.accept = True
         print(self.val if self.val != None else '', end=' ')
+        #return self.val if self.val != None else ''
         #print('(', self.first_pos,') - (', self.val if self.val != None else '', '(', self.last_pos,') - (', end=' ')
 
     def post2(self):
@@ -153,5 +154,8 @@ def buildTree(e, exp):
         #
         return Node(e, buildTree(exp.pop(len(exp)-1), exp), buildTree(exp.pop(len(exp)-1), exp))
     else:
-        #
-        return Node(e, None, None, len(exp)+1)
+        # Una hoja con el símbolo epsilon no debe tener posición
+        if e == 'ε':
+            return Node(e, None, None)
+        else:
+            return Node(e, None, None, len(exp)+1)
