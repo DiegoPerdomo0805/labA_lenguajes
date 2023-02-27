@@ -1,13 +1,13 @@
 # Recibimos un arbol sintactico y lo recorremos para generar los diferentes autómatas finitos no deterministas
-from InfixToPostfix import InfixToPostfix
+#from InfixToPostfix import InfixToPostfix
 import graphviz as gv
 
 operadores = ['*', '|', '.']
 
 #exp = 'a**(b|c)?*(da+)?a(c|d*)+'
-exp = '(a|b)*a(a|b)(a|b)'
-
-exp_postfix = InfixToPostfix(exp)
+## exp = '(a|b)*a(a|b)(a|b)'
+## 
+## exp_postfix = InfixToPostfix(exp)
 
 
 class Node:
@@ -36,7 +36,7 @@ def generateAFN(regex):
     NFA_final = []
     i = 0
     for e in regex:
-        print(e)
+        #print(e)
         if(e in operadores): 
             # Construimos el automata de un operador
             #pass
@@ -112,7 +112,7 @@ def visual_AFN(NFA):
     g.attr('edge', fontcolor='black')
     g.attr('edge', fontsize='20')
     g.attr('graph', rankdir='LR')
-    g.attr('graph', size='8,5')
+    g.attr('graph', size='17')
     
     # agregamos los nodos
     estados = []
@@ -129,7 +129,5 @@ def visual_AFN(NFA):
     
     return g.render('AFN', view=True)
 
-AFN = generateAFN(exp_postfix)
 
-visual_AFN(AFN)
 

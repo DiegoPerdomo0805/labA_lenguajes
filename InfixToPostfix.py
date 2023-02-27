@@ -81,29 +81,47 @@ def parenthesis_check(exp):
         return False
 
 
-# Segunda función de validación de la expresión regular
-# Verifica que la expresión regular no contenga caracteres inválidos
-# de otra forma no se puede realizar la transformación y se debe indicar al usuario
-# que la expresión regular no es válida
-def syntax_check(exp):
-    pass
 
-
-# Tercera función de validación de la expresión regular
-# Verifica que la expresión regular no contenga errores de gramática
-# de otra forma no se puede realizar la transformación y se debe indicar al usuario
-# que la expresión regular no es válida
-
-# SE HARÁ EL CHEQUEO ANTES DE REALIZAR LA TRANSFORMACIÓN DE SÍMBOLOS ABREVIADOS
-# A SU FORMA COMPLETA
-# ESTO CON EL OBJETIVO DE AHORRAR TIEMPO DE EJECUCIÓN SIENDO QUE LOS SÍMBOLOS	
-# ABREVIADOS, SIENDO UNARIOS, SON MÁS FÁCILES DE IDENTIFICAR QUE LOS OPERADORES
-# BINARIOS
-
+# Función que verifica que la expresión regular no tenga errores
 # Caso 1: No alimentarle las entradas necesarias a los operadores unarios y binarios
 # Caso 2: Alimentarle a un operador binario una entrada que no sea un símbolo o un paréntesis o un operador binario
-def grammar_check(exp):
-    pass
+def symbol_check(exp):
+    flag = True
+    
+    #symbols = ['*', '|', '(', ')']
+    for i in range(len(exp)):
+        e = exp[i]
+        if e == '*':
+            if i == 0 or exp[i-1] == '|' or exp[i-1] == '(':
+                flag = False
+        elif e == '|':
+            if i == 0 or exp[i-1] == '|' or exp[i-1] == '(' or i == len(exp)-1:
+                flag = False
+            else:
+                if exp[i+1] == '|' or exp[i+1] == ')' or exp[i+1] == '*' or exp[i+1] == '.' or exp[i+1] == '+' or exp[i+1] == '?':
+                    flag = False
+        elif e == '.':
+            if i == 0 or exp[i-1] == '|' or exp[i-1] == '(' or i == len(exp)-1:
+                flag = False
+            else:
+                if exp[i+1] == '|' or exp[i+1] == ')' or exp[i+1] == '*' or exp[i+1] == '.' or exp[i+1] == '+' or exp[i+1] == '?':
+                    flag = False
+        elif e == '(':
+            if i == len(exp)-1:
+                flag = False
+            else:
+                if exp[i+1] == '|' or exp[i+1] == ')' or exp[i+1] == '*' or exp[i+1] == '.' or exp[i+1] == '+' or exp[i+1] == '?':
+                    flag = False
+        elif e == '+':
+            if i == 0 or exp[i-1] == '|' or exp[i-1] == '(':
+                flag = False
+        elif e == '?':
+            if i == 0 or exp[i-1] == '|' or exp[i-1] == '(':
+                flag = False
+
+        
+    return flag
+                
     
 
 
@@ -148,8 +166,10 @@ def readExp(exp):
 
 #Basado en el algortimo de Shunting-yard
 def InfixToPostfix(exp):
-    exp = trans(exp)
-    if parenthesis_check(exp):
+    if parenthesis_check(exp) and symbol_check(exp):
+        print('La expresion regular es válida: ', exp)
+        exp = trans(exp)
+        print('La expresion regular transformada es: ', exp)
         exp = readExp(exp)
         #print(exp)
         OpStack = []
@@ -178,7 +198,9 @@ def InfixToPostfix(exp):
         #return exp_postfix
         return postfix
     else:
-        return 'La expresión regular no es válida, verifique que los paréntesis estén balanceados'
+        # return 'La expresión regular no es válida, verifique que los paréntesis estén balanceados'
+        print('La expresión regular no es válida')
+        return False
 
 
 # expresiones regulares de prueba válidas en forma expandida, no concatenadas
@@ -240,3 +262,25 @@ def InfixToPostfix(exp):
 #
 ##print('Expresión regular 2: ', InfixToPostfix(exp))
 #
+
+
+
+#   foul = [
+#       'a+b*c',
+#       '(a(b|c)*',
+#       'ab(cd)+',
+#       '[a-z])*',
+#       'ab|c*def',
+#       '.+.+*',
+#       '\d?[a-z]+',
+#       '(?i)dog|cat|mouse',
+#       'a?b+c*'
+#       ]#   
+
+#   for e in foul:
+#       print('Expresión regular: ', e)
+#       if parenthesis_check(e):
+#           #print('La expresión regular es válida')
+#           print(symbol_check(e))
+#       else:
+#           print('La expresión regular no es válida')#   
