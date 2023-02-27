@@ -1,4 +1,5 @@
 from BinaryTree import buildTree, ArrayInArray
+#from AFN import generateAFN
 
 # Métodos de transfroemación infix a postfix utilizando shunting yard
 
@@ -150,7 +151,7 @@ def InfixToPostfix(exp):
     exp = trans(exp)
     if parenthesis_check(exp):
         exp = readExp(exp)
-        print(exp)
+        #print(exp)
         OpStack = []
         postfix = []
         for e in exp:
@@ -171,10 +172,11 @@ def InfixToPostfix(exp):
                     OpStack.append(e)
         while len(OpStack) > 0:
             postfix.append(OpStack.pop())
-        postfix.append('#')
-        postfix.append('.')
-        exp_postfix = ''.join(postfix)
-        return exp_postfix
+        #postfix.append('#')
+        #postfix.append('.')
+        #exp_postfix = ''.join(postfix)
+        #return exp_postfix
+        return postfix
     else:
         return 'La expresión regular no es válida, verifique que los paréntesis estén balanceados'
 
@@ -184,7 +186,7 @@ def InfixToPostfix(exp):
 # exp = 'a|b'
 # exp = 'a|b|c'
 # exp = '(a|b)*'s
-exp = '(a|b)*c'
+# exp = '(a|b)*c'
 # exp = '(a|b*)**cd'
 #exp  = 'a**b*c|d'
 
@@ -195,7 +197,7 @@ exp = '(a|b)*c'
 #exp = 'a*b+c'
 #exp = 'a*b+c*'
 #exp = 'a*b+c*|d'
-exp = 'a**(b|c)?*(da+)?a(c|d*)+'
+#                     exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 #exp = '(a?|b+)***c**'
 #exp = '(a|b+)+'
 #exp = '(a***|b****)***'
@@ -205,22 +207,33 @@ exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 # expresiones regulares de prueba inválidas
 #exp = ')a|b('
 
-print('Expresión regular: ', exp)
+#print('Expresión regular: ', exp)
 #print('Expresión regular en forma abreviada: ', translate(exp))
-print('Expresión simplificada: ', trans(exp))
+#print('Expresión simplificada: ', trans(exp))
 #sprint(parenthesis_check(exp))
 
 
 
-exp = InfixToPostfix(exp)
+#exp = InfixToPostfix(exp)
 #
 #
-print('Expresión regular postfix: ', exp)
-exp = list(exp)
-syntactic_tree = buildTree(exp.pop(), exp)
-#
-print('Árbol sintáctico: ', syntactic_tree)
-print(syntactic_tree.traversePostOrder())
+#print('Expresión regular postfix: ', exp)
+#for e in exp: 
+ #   print(e)
+##### exp = list(exp)
+##### syntactic_tree = buildTree(exp.pop(), exp)
+##### 
+##### 
+##### 
+##### print('\n\n')
+##### 
+##### print('Árbol sintáctico: ', syntactic_tree)
+##### print(syntactic_tree.traversePostOrder())#
+##### print('\n\n')
+##### syntactic_tree.post2()
+##### syntactic_tree.determineFollowPos()
+##### 
+#syntactic_tree.post3()
 #syntactic_tree.post2()
 #syntactic_tree.determineFollowPos()
 #syntactic_tree.post3()

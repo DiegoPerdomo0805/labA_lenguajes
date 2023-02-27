@@ -1,3 +1,6 @@
+# implementar validación para el símbolo epsilon
+
+
 class Node:
     def __init__(self, key, right=None, left=None, pos=None):
         self.left = left
