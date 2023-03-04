@@ -9,12 +9,19 @@ operadores = ['*', '|', '.']
 ## 
 ## exp_postfix = InfixToPostfix(exp)
 
+AutomataFND = None
 
 class Node:
     def __init__(self, name):
         self.name = name
         self.isAccept = False
         self.transitions = []
+
+    def checkTransition(self, symbol):
+        for t in self.transitions:
+            if t.symbol == symbol:
+                return t.to
+        return None
 
 
 class Transition:
@@ -97,7 +104,11 @@ def generateAFN(regex):
             s1.transitions.append(Transition(e, s2))
             NFA_final.append(NFA(s1, s2))
         i += 1
-    return NFA_final.pop()
+    #print(len(NFA_final))
+    #print("AFN posición inicial: ", NFA_final[0].start.name, " - Posición final", NFA_final[0].end.name)
+    #return NFA_final.pop()
+    AutomataFND = NFA_final.pop()
+    return AutomataFND
                 
 
 
