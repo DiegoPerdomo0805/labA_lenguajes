@@ -11,6 +11,7 @@ exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 exp = 'a(a?b*|c+)b|baa'
 exp = 'aab*'
 exp = '(0|ε)((1|ε)|ε)0*'
+exp = 'ab*ab*'
 
 
 exp_postfix = InfixToPostfix(exp)
@@ -39,7 +40,8 @@ for e in AFN.start.transitions:
 # recorrido epsilon
 
 inicio = AFN.start
-print("Recorrido epsilon: ", inicio.name)
+fin = AFN.end
+#print("Recorrido epsilon: ", inicio.name)
 
 estados = []
 
@@ -56,23 +58,9 @@ estado_inicial = []
 # 3 -> 4 con ε
 
 
-for e in inicio.transitions:
-    print(e.symbol, e.to.name)
-print(' final ', AFN.end.name)
-
-"""
-def estado_nuevo(inicio, transicion, estado):
-    for e in inicio.transitions:
-        if e.symbol in transicion and e.to not in estado:
-            #print(e.to.name)
-            #print(" de ", inicio.name, " a ", e.to.name, " con ", e.symbol)
-            estado.append(e.to)
-            estado_nuevo(e.to, transicion, estado)"""
-
-#estado_nuevo(inicio, ['ε', 'a'], estado_inicial)
-"""
-for e in estado_inicial:
-    print("Recorrido epsilon: ", e.name)"""
+#### for e in inicio.transitions:
+####     print(e.symbol, e.to.name)
+#### print(' final ', AFN.end.name)
 
 class state:
     def __init__(self, name, contains):
@@ -103,26 +91,81 @@ def new_state(symbol, lista):
     for e in lista:
         if e.checkTransition(symbol) != None:
             temp_state = e.checkTransition(symbol)
+            temp.append(temp_state)
             recorrido_epsilon(temp_state, temp)
 
     return temp
 
 estado_inicial.append(inicio)
 recorrido_epsilon(inicio, estado_inicial)
-print("Recorrido epsilon: ", estado_inicial)
-for e in estado_inicial:
+
+if fin in estado_inicial:
+    begin_state = state('S0', estado_inicial)
+    begin_state.isAccept = True
+else:
+    begin_state = state('S0', estado_inicial)
+
+
+
+print("estado inicial: ", begin_state.name, "\ntransiciones: ", begin_state.transitions, "\naceptación: ", begin_state.isAccept)
+for e in begin_state.contains:
     print(e.name)
 
+estados.append(begin_state)
 
-"""
-while flag:
-    flag = False
-    for e in inicio.transitions:
-        if e.symbol == 'ε':
-            #print(e.to.name)
-            print(" de ", inicio.name, " a ", e.to.name, " con ", e.symbol)
-            inicio = e.to
-            flag = True"""
+estados_content = []
+
+estados_content.append(begin_state.contains)
+
+
+i = 1
+for e in estados:
+    for symbol in sigma:
+        new = new_state(symbol, e.contains)
+
+        # si el nuevo estado no está en la lista de estados y no es vacío
+
+        if new not in estados_content and new != []:
+
+
+            #estados.append(new)
+            n_state = state(f"S{i}", new)
+            if fin in new:
+                n_state.isAccept = True
+            e.addTransition(symbol, n_state)
+            estados.append(n_state)
+            estados_content.append(new)
+        else:
+            if new != []: # si el estado no es vacío, quiere decir que es una transición a un estado ya existente
+                for i in range(len(estados_content)):
+                    if estados_content[i] == new:
+                        e.addTransition(symbol, estados[i])
+                        """break
+                e.addTransition(symbol, None)"""
+            else:
+                e.addTransition(symbol, None)
+        i += 1
+            #e.addTransition(symbol, new)
+
+
+
+print('------------------------------------------------------------')
+
+for e in estados:
+    print("estado: ", e.name, ', ', e, "\naceptación: ", e.isAccept)
+    temp = ''
+    for i in e.contains:
+        #print(i.name, type(i.name))
+        temp += f"{i.name}" + ', '
+    print("contiene: ", temp)
+    for k, v in e.transitions.items():
+        if v != None:
+            print(k, v.name)
+        else:
+            print(k, v)
+    print('------------------------------------------------------------')
+
+#estad0_2 = new_state('0', estado_inicial)
 
 
 
