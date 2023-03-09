@@ -234,27 +234,27 @@ def InfixToPostfix(exp):
 #print('Expresión simplificada: ', trans(exp))
 #sprint(parenthesis_check(exp))
 
+exp = '(0|ε)((1|ε)|ε)0*'
 
-
-#exp = InfixToPostfix(exp)
+exp = InfixToPostfix(exp)
 #
 #
-#print('Expresión regular postfix: ', exp)
-#for e in exp: 
- #   print(e)
-##### exp = list(exp)
-##### syntactic_tree = buildTree(exp.pop(), exp)
-##### 
-##### 
-##### 
-##### print('\n\n')
-##### 
-##### print('Árbol sintáctico: ', syntactic_tree)
-##### print(syntactic_tree.traversePostOrder())#
-##### print('\n\n')
-##### syntactic_tree.post2()
-##### syntactic_tree.determineFollowPos()
-##### 
+print('Expresión regular postfix: ', exp)
+for e in exp: 
+   print(e)
+exp = list(exp)
+syntactic_tree = buildTree(exp.pop(), exp)
+
+
+
+print('\n\n')
+
+print('Árbol sintáctico: ', syntactic_tree)
+print(syntactic_tree.traversePostOrder())#
+print('\n\n')
+syntactic_tree.post2()
+syntactic_tree.determineFollowPos()
+
 #syntactic_tree.post3()
 #syntactic_tree.post2()
 #syntactic_tree.determineFollowPos()

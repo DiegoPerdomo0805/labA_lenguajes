@@ -1,5 +1,6 @@
 from InfixToPostfix import InfixToPostfix, operators
 from AFN import generateAFN, visual_AFN
+from AFN_to_AFD import AFD_from_AFN, visual_AFD_from_AFN
 
 #exp = '(a|b)*a(a|b)(a|b)'
 
@@ -31,14 +32,16 @@ print("Alfabeto: ", sigma)
 postfix = ''.join(exp_postfix)
 print("Expresión regular formato postfix: ", postfix)
 AFN = generateAFN(exp_postfix)  
-#visual_AFN(AFN)
-"""
-print("AFN: ", AFN.start.name)
-for e in AFN.start.transitions:
-    print(e.symbol, e.to.name)"""
+visual_AFN(AFN)
+
+AFD_de_AFN = AFD_from_AFN(AFN, sigma)
+visual_AFD_from_AFN(AFD_de_AFN)
+
+
+
 
 # recorrido epsilon
-
+"""
 inicio = AFN.start
 fin = AFN.end
 #print("Recorrido epsilon: ", inicio.name)
@@ -140,8 +143,6 @@ for e in estados:
                 for i in range(len(estados_content)):
                     if estados_content[i] == new:
                         e.addTransition(symbol, estados[i])
-                        """break
-                e.addTransition(symbol, None)"""
             else:
                 e.addTransition(symbol, None)
         i += 1
@@ -165,6 +166,32 @@ for e in estados:
             print(k, v)
     print('------------------------------------------------------------')
 
+
+# graphviz de AFD
+g = graphviz.Digraph(comment='AFD', format='png')
+g.attr('node', shape='circle')
+g.attr('node', style='filled')
+g.attr('node', color='lightblue2')
+g.attr('node', fontcolor='black')
+g.attr('edge', color='black')
+g.attr('edge', fontcolor='black')
+g.attr('edge', fontsize='20')
+g.attr('graph', rankdir='LR')
+g.attr('graph', size='17')
+    
+
+for e in estados:
+    if e.isAccept:
+        g.node(e.name, e.name, shape='doublecircle')
+    else:
+        g.node(e.name, e.name)
+    for k, v in e.transitions.items():
+        if v != None:
+            g.edge(e.name, v.name, label=k)
+g.render('AFD', view=True) 
+
+
+
 #estad0_2 = new_state('0', estado_inicial)
 
 
@@ -173,4 +200,4 @@ for e in estados:
 # recorrido de transiciones con símbolos de manera recursiva
 
 
-# recorrido 
+# recorrido """

@@ -1,0 +1,15 @@
+// AFN
+digraph {
+	S0 [label=S0]
+	S0 -> S1 [label=a]
+	S1 [label=S1]
+	S1 -> S3 [label=a]
+	S1 -> S4 [label=b]
+	S3 [label=S3 shape=doublecircle]
+	S3 -> S6 [label=b]
+	S4 [label=S4]
+	S4 -> S3 [label=a]
+	S4 -> S4 [label=b]
+	S6 [label=S6 shape=doublecircle]
+	S6 -> S6 [label=b]
+}

@@ -20,6 +20,8 @@ class Node:
             self.nullable = self.left.nullable and self.right.nullable
         elif self.val == '|':
             self.nullable = self.left.nullable or self.right.nullable
+        elif self.val == 'ε':
+            self.nullable = True
         else:
             self.nullable = False
     
@@ -33,6 +35,8 @@ class Node:
                 self.first_pos = self.left.first_pos
         elif self.val == '|':
             self.first_pos = self.left.first_pos + self.right.first_pos
+        elif self.val == 'ε':
+            self.first_pos = []
         else:
             self.first_pos = [self.pos]
 
@@ -46,6 +50,8 @@ class Node:
                 self.last_pos = self.right.last_pos
         elif self.val == '|':
             self.last_pos = self.left.last_pos + self.right.last_pos
+        elif self.val == 'ε':
+            self.last_pos = []
         else:
             self.last_pos = [self.pos]
 
