@@ -138,7 +138,7 @@ def visual_AFN(NFA):
                 g.edge(str(nodo.name), str(t.to.name), label=t.symbol)
                 stack.append(t.to)
     
-    return g.render('AFN', view=True)
+    return g.render('AFN', view=True, directory='./visual_results/')
 
 
 

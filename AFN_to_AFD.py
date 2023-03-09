@@ -96,7 +96,7 @@ def AFD_from_AFN(AFN, sigma):
     return states
 
 def visual_AFD_from_AFN(AFN):
-    g = graphviz.Digraph(comment='AFD', format='png')
+    g = graphviz.Digraph(comment='AFD_from_AFN', format='png')
     g.attr('node', shape='circle')
     g.attr('node', style='filled')
     g.attr('node', color='lightblue2')
@@ -116,6 +116,6 @@ def visual_AFD_from_AFN(AFN):
         for k, v in e.transitions.items():
             if v != None:
                 g.edge(e.name, v.name, label=k)
-    g.render('AFD', view=True) 
+    g.render('AFD_from_AFN', view=True, directory='./visual_results/') 
 
     
