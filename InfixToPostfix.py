@@ -60,6 +60,66 @@ def trans(exp):
 
 
 
+def trans2(exp):        # el recorrido se hace de derecha a izquierda para evitar problemas con los índices
+    i = len(exp) - 1
+    while i >= 0:
+        temp = exp[i]
+        if exp[i] == '*':
+            if exp[i-1] == '*':
+                j = i 
+                while exp[j] == '*':
+                    j -= 1
+                exp = exp[:j+1] + exp[i:]
+                i = j+1
+                #print(exp)
+        elif exp[i] == '?':
+            if i < len(exp)-1:
+                t2 = exp[i+1]
+                if exp[i+1] == ')':
+                    print('here')
+                    j = i
+                    while exp[j] != '(':
+                        j -= 1
+                    exp2 = exp[j:i]
+                    exp = exp[:j] + exp2 + '|ε' + exp[i+1:]
+                    #added_parens.append((j, i+1))
+                    i = j+1
+            if exp[i-1] == ')':
+                j = i
+                while exp[j] != '(':
+                    j -= 1
+                exp2 = exp[j:i]
+                exp = exp[:j] + '(' + exp2 + '|ε)' + exp[i+1:]
+                #added_parens.append((j, i+1))
+                i = j+1
+            else:
+                exp = exp[:i-1] + '(' + exp[i-1] + '|ε)' + exp[i+1:]
+                #added_parens.append((i-1, i+1))
+        elif exp[i] == '+':
+            if exp[i-1] == ')':
+                j = i
+                while exp[j] != '(':
+                    j -= 1
+                exp2 = exp[j:i]
+                exp3 = exp[:j]
+                exp = exp[:j] + '(' + exp2 + exp2 + '*' + ')' + exp[i+1:]
+                #added_parens.append((j, i+1))
+                i = j+1
+            else:
+                exp = exp[:i-1] + '(' + exp[i-1] + exp[i-1] + '*' + ')' + exp[i+1:]
+                #added_parens.append((i-1, i+1))
+        i -= 1
+    flag = False
+    for e in exp:
+        if e == '+' or e == '?':
+            flag = True
+    if flag:
+        exp = trans(exp)
+
+    return exp
+
+
+
 
 # Primera función de validación de la expresión regular
 # Verifica que los paréntesis estén balanceados, de otra forma
@@ -79,6 +139,57 @@ def parenthesis_check(exp):
         return True
     else:
         return False
+
+
+def remove_extra_parentheses(exp):
+    """
+    Removes extra parentheses from a regular expression.
+
+    Parameters:
+        exp (str): The regular expression to remove extra parentheses from.
+
+    Returns:
+        str: The regular expression with extra parentheses removed.
+    """
+    # Split the regular expression into characters
+    chars = list(exp)
+
+    # Initialize a stack to keep track of parentheses
+    stack = []
+
+    # Loop through each character in the expression
+    i = 0
+    while i < len(chars):
+        c = chars[i]
+
+        # If the character is an opening parenthesis, push it onto the stack
+        if c == '(':
+            stack.append(i)
+            i += 1
+
+        # If the character is a closing parenthesis, check if it has a matching opening parenthesis
+        elif c == ')':
+            if len(stack) > 0:
+                # If there is a matching opening parenthesis, remove both parentheses
+                stack.pop()
+                if i == len(chars) - 1 and stack:
+                    i += 1
+                else:
+                    chars.pop(i)
+                    if stack:
+                        chars.pop(stack.pop())
+            else:
+                # If there is no matching opening parenthesis, ignore the closing parenthesis
+                i += 1
+
+        # If the character is not a parenthesis, move to the next character
+        else:
+            i += 1
+
+    # Join the remaining characters back into a string
+    result = ''.join(chars)
+
+    return result
 
 
 
@@ -234,26 +345,30 @@ def InfixToPostfix(exp):
 #print('Expresión simplificada: ', trans(exp))
 #sprint(parenthesis_check(exp))
 
-exp = '(0|ε)((1|ε)|ε)0*'
 
-exp = InfixToPostfix(exp)
+#exp = '0?(1?)?0*'
+## exp = '(0|ε)((1|ε)|ε)0*'
 #
-#
-print('Expresión regular postfix: ', exp)
-for e in exp: 
-   print(e)
-exp = list(exp)
-syntactic_tree = buildTree(exp.pop(), exp)
+##exp = InfixToPostfix(exp)
+##
+##
+#print('Expresión regular postfix: ', trans(exp))
+#print('Expresión regular postfix: ', trans2(exp))
+#print('Expresión regular postfix: ', remove_extra_parentheses(trans2(exp)) )
+#for e in exp: 
+#   print(e)
+#exp = list(exp)
+#syntactic_tree = buildTree(exp.pop(), exp)
 
 
 
-print('\n\n')
+## print('\n\n')
+## print('Árbol sintáctico: ', syntactic_tree)
+## print(syntactic_tree.traversePostOrder())#
+## print('\n\n')
+## syntactic_tree.post2()
+## syntactic_tree.determineFollowPos()
 
-print('Árbol sintáctico: ', syntactic_tree)
-print(syntactic_tree.traversePostOrder())#
-print('\n\n')
-syntactic_tree.post2()
-syntactic_tree.determineFollowPos()
 
 #syntactic_tree.post3()
 #syntactic_tree.post2()

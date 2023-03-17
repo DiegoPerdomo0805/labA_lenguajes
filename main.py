@@ -1,7 +1,8 @@
 from InfixToPostfix import InfixToPostfix, operators
 from AFN import generateAFN, visual_AFN
 from AFN_to_AFD import AFD_from_AFN, visual_AFD_from_AFN
-
+from BinaryTree import Node, operators, ArrayInArray, buildTree
+from AFN_to_AFD import AFD_from_AFN, state
 #exp = '(a|b)*a(a|b)(a|b)'
 
 exp = 'a**(b|c)?*(da+)?a(c|d*)+'
@@ -10,9 +11,12 @@ exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 #exp = input("Ingrese la expresión regular: ")
 
 exp = 'a(a?b*|c+)b|baa'
-exp = 'aab*'
-exp = '(0|ε)((1|ε)|ε)0*'
+exp = '(b|b)*abb(a|b)*'
+#exp = '(a|b)*(a|(bb))*'
 exp = 'ab*ab*'
+#exp = 'aab*'
+#exp = '(0|ε)((1|ε)|ε)0*'
+#exp = 'ab*ab*'
 
 
 exp_postfix = InfixToPostfix(exp)
@@ -32,172 +36,98 @@ print("Alfabeto: ", sigma)
 postfix = ''.join(exp_postfix)
 print("Expresión regular formato postfix: ", postfix)
 AFN = generateAFN(exp_postfix)  
-visual_AFN(AFN)
+#visual_AFN(AFN)
 
 AFD_de_AFN = AFD_from_AFN(AFN, sigma)
-visual_AFD_from_AFN(AFD_de_AFN)
+#visual_AFD_from_AFN(AFD_de_AFN)
+
+
+exp_postfix_2 = exp_postfix
+exp_postfix_2.append( '#')
+exp_postfix_2.append('.')
+
+exp_postfix_2 = list(exp_postfix_2)
+tree = buildTree(exp_postfix_2.pop(), exp_postfix_2)
+tree.traversePostOrder()
+print()
+#tree.post2()
+tree.determineFollowPos()
+print()
+tree.post3()
+
+print('Primer firstpos del árbol: ',tree.first_pos)
+
+#print('Valor del elemento final de la regex: ',tree.searchPos(len(postfix)).val)  
+print('\n\n\n')
 
 
 
 
-# recorrido epsilon
-"""
-inicio = AFN.start
-fin = AFN.end
-#print("Recorrido epsilon: ", inicio.name)
+Dtran = []
+Dstates = []
+Dstates.append(tree.first_pos)
+Marked = []
 
-estados = []
+# mientras exista un estado no marcado, se procede a marcarlo
+#while Marked != Dstates:
+#    e = next(s for s in Dstates if s not in Marked)
+for e in Dstates:
+    if e not in Marked:
+        Marked.append(e)
+        # se obtiene el conjunto de estados alcanzables
+        # con cada uno de los símbolos del regex
+        #i = 0
+        #while i < len(postfix):
+        for i in range(len(postfix)):
+            acu = []
+            if postfix[i] in sigma:
+                if (i+1) in e:
+                    #print(i+1, e)
+                    #print(tree.searchPos(i+1).val)
+                    #print(tree.searchPos(i+1).follow_pos)
+                    #acu.append(tree.searchPos(i+1).follow_pos)
+                    temp_awedowed = tree.searchPos(i+1).follow_pos
+                    for e2 in temp_awedowed:
+                        if e2 not in acu:
+                            acu.append(e2)
+                    print(acu)
 
-estado_inicial = []
-
-# a la hora de crear un nuevo estado, es necesario tener en mente que la transición no se puede repetir dos veces seguidas
-# a menos que sea una transición epsilon
-# un ejemplo de esto sería aab*, donde el estado inicial es el estado 0, y el estado final es el estado 3
-# el afn sería el siguiente:
-# 0 -> 1 con a
-# 1 -> 2 con a
-# 2 -> 3 con b
-# 3 -> 3 con b
-# 3 -> 4 con ε
-
-
-#### for e in inicio.transitions:
-####     print(e.symbol, e.to.name)
-#### print(' final ', AFN.end.name)
-
-class state:
-    def __init__(self, name, contains):
-        self.name = name
-        self.contains = contains
-        self.transitions = {}
-        self.isAccept = False
-
-    def isAccept(self, end):
-        if end in self.contains:
-            self.isAccept = True
-
-    def addTransition(self, symbol, to):
-        self.transitions[symbol] = to
-        
-        
-
-
-def recorrido_epsilon(inicio, lista):
-    for e in inicio.transitions:
-        if e.symbol == 'ε' and e.to not in lista:
-            #print("Recorrido epsilon: ", e.to.name)
-            lista.append(e.to)
-            recorrido_epsilon(e.to, lista)
-
-def new_state(symbol, lista):
-    temp = []
-    for e in lista:
-        if e.checkTransition(symbol) != None:
-            temp_state = e.checkTransition(symbol)
-            temp.append(temp_state)
-            recorrido_epsilon(temp_state, temp)
-
-    return temp
-
-estado_inicial.append(inicio)
-recorrido_epsilon(inicio, estado_inicial)
-
-if fin in estado_inicial:
-    begin_state = state('S0', estado_inicial)
-    begin_state.isAccept = True
-else:
-    begin_state = state('S0', estado_inicial)
+                    # comprobar que no existas dos transiciones con el mismo símbolo
+                    # en el mismo estado
+                    # si existe, se concatena el conjunto de estados alcanzables
+                    # de la transición existente con el nuevo conjunto de estados
+                    # alcanzables
+                    for t in Dtran:
+                        if t[0] == e and t[1] == postfix[i]:
+                            #t[2] = t[2] + acu
+                            for e2 in acu:
+                                if e2 not in t[2]:
+                                    t[2].append(e2)
+                            acu = t[2]
+                    
 
 
-
-print("estado inicial: ", begin_state.name, "\ntransiciones: ", begin_state.transitions, "\naceptación: ", begin_state.isAccept)
-for e in begin_state.contains:
-    print(e.name)
-
-estados.append(begin_state)
-
-estados_content = []
-
-estados_content.append(begin_state.contains)
-
-
-i = 1
-for e in estados:
-    for symbol in sigma:
-        new = new_state(symbol, e.contains)
-
-        # si el nuevo estado no está en la lista de estados y no es vacío
-
-        if new not in estados_content and new != []:
-
-
-            #estados.append(new)
-            n_state = state(f"S{i}", new)
-            if fin in new:
-                n_state.isAccept = True
-            e.addTransition(symbol, n_state)
-            estados.append(n_state)
-            estados_content.append(new)
-        else:
-            if new != []: # si el estado no es vacío, quiere decir que es una transición a un estado ya existente
-                for i in range(len(estados_content)):
-                    if estados_content[i] == new:
-                        e.addTransition(symbol, estados[i])
-            else:
-                e.addTransition(symbol, None)
-        i += 1
-            #e.addTransition(symbol, new)
-
-
-
-print('------------------------------------------------------------')
-
-for e in estados:
-    print("estado: ", e.name, ', ', e, "\naceptación: ", e.isAccept)
-    temp = ''
-    for i in e.contains:
-        #print(i.name, type(i.name))
-        temp += f"{i.name}" + ', '
-    print("contiene: ", temp)
-    for k, v in e.transitions.items():
-        if v != None:
-            print(k, v.name)
-        else:
-            print(k, v)
-    print('------------------------------------------------------------')
-
-
-# graphviz de AFD
-g = graphviz.Digraph(comment='AFD', format='png')
-g.attr('node', shape='circle')
-g.attr('node', style='filled')
-g.attr('node', color='lightblue2')
-g.attr('node', fontcolor='black')
-g.attr('edge', color='black')
-g.attr('edge', fontcolor='black')
-g.attr('edge', fontsize='20')
-g.attr('graph', rankdir='LR')
-g.attr('graph', size='17')
+                    # se determina si el nuevo conjunto de estados alcanzables
+                    # ya existe en Dstates, si no existe, se agrega a Dstates
+                    #if acu not in Dstates:
+                    for j in Dstates:
+                        if not ArrayInArray(acu, j):
+                            #acu = j
+                            Dstates.append(acu)
+                    # se crea la transición
+                    if ArrayInArray(acu, e):
+                        #temp = [e, e, postfix[i]]
+                        temp = [e, postfix[i], e]
+                    else:
+                        #temp = [e, acu, postfix[i]]
+                        temp = [e, postfix[i], acu]
+                    if temp not in Dtran:
+                        Dtran.append(temp)
+        #i += 1
     
-
-for e in estados:
-    if e.isAccept:
-        g.node(e.name, e.name, shape='doublecircle')
-    else:
-        g.node(e.name, e.name)
-    for k, v in e.transitions.items():
-        if v != None:
-            g.edge(e.name, v.name, label=k)
-g.render('AFD', view=True) 
-
-
-
-#estad0_2 = new_state('0', estado_inicial)
-
-
-
-
-# recorrido de transiciones con símbolos de manera recursiva
-
-
-# recorrido """
+#print(Dtran)
+print('Estados: ',Dstates)
+print('Marked',Marked)
+for e in Dtran:
+    print(' *- ',e)
+        

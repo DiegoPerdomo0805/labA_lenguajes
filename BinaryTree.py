@@ -92,7 +92,7 @@ class Node:
         self.determineLastPos() 
         if self.val == '#':
             self.accept = True
-        print(self.val if self.val != None else '', end=' ')
+        #print(self.val if self.val != None else '', end=' ')
         #return self.val if self.val != None else ''
         #print('(', self.first_pos,') - (', self.val if self.val != None else '', '(', self.last_pos,') - (', end=' ')
 
