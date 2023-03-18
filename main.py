@@ -4,19 +4,22 @@ from AFN_to_AFD import AFD_from_AFN, visual_AFD_from_AFN
 from BinaryTree import Node, operators, ArrayInArray, buildTree
 from AFN_to_AFD import AFD_from_AFN, state
 #exp = '(a|b)*a(a|b)(a|b)'
+from direct_AFD import direct_build, visual_directAFD
 
 exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 
 # input de la expresión regular
 #exp = input("Ingrese la expresión regular: ")
 
-exp = 'a(a?b*|c+)b|baa'
-exp = '(b|b)*abb(a|b)*'
+#exp = 'a(a?b*|c+)b|baa'
+#exp = '(b|b)*abb(a|b)*'
 #exp = '(a|b)*(a|(bb))*'
-exp = 'ab*ab*'
+#exp = 'ab*ab*'
 #exp = 'aab*'
 #exp = '(0|ε)((1|ε)|ε)0*'
-#exp = 'ab*ab*'
+exp = 'ab*ab*'
+#exp = '(10)*(10)*'
+#exp = '(a|b)*a(a|b)(a|b)'
 
 
 exp_postfix = InfixToPostfix(exp)
@@ -49,21 +52,32 @@ exp_postfix_2.append('.')
 exp_postfix_2 = list(exp_postfix_2)
 tree = buildTree(exp_postfix_2.pop(), exp_postfix_2)
 tree.traversePostOrder()
-print()
-#tree.post2()
 tree.determineFollowPos()
-print()
-tree.post3()
+#print()
+#tree.post2()
 
-print('Primer firstpos del árbol: ',tree.first_pos)
+print()
+#tree.post3()
+
 
 #print('Valor del elemento final de la regex: ',tree.searchPos(len(postfix)).val)  
-print('\n\n\n')
+#print('\n\n\n')
+
+
+AFD_directo = direct_build(tree, sigma, postfix)
+visual_directAFD(AFD_directo)
+
+"""for e in AFD_directo:
+    print( e.name, ' - ' , e.contains, ' - ' , e.isAccept)
+          
+    for f in e.transitions:
+        print(' - ', e.name, '->', f, '->', e.transitions[f].name)
+"""
+#print(len(postfix), postfix, postfix[len(postfix)-1], tree.searchPos(len(postfix)+1).val)
 
 
 
-
-Dtran = []
+"""Dtran = []
 Dstates = []
 Dstates.append(tree.first_pos)
 Marked = []
@@ -130,4 +144,25 @@ print('Estados: ',Dstates)
 print('Marked',Marked)
 for e in Dtran:
     print(' *- ',e)
-        
+
+
+direct_states = []
+i = 0
+for e in Marked:
+    direct_states.append(state(f"S{i}",e))
+    i += 1
+
+
+for e in Dtran:
+    for e2 in direct_states:
+        if e[0] == e2.contains:
+            for e3 in direct_states:
+                if e[2] == e3.contains:
+                    e2.addTransition(e[1], e3)
+
+#for e in direct_states:
+#    print(e.name, e.contains)
+for e in direct_states:
+    print(e.name, e.contains)
+    for f in e.transitions:
+        print('  *- ', e.name, '->' ,f, '->' , e.transitions[f].name)"""
