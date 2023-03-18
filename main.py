@@ -39,10 +39,10 @@ print("Alfabeto: ", sigma)
 postfix = ''.join(exp_postfix)
 print("Expresión regular formato postfix: ", postfix)
 AFN = generateAFN(exp_postfix)  
-#visual_AFN(AFN)
+visual_AFN(AFN)
 
 AFD_de_AFN = AFD_from_AFN(AFN, sigma)
-#visual_AFD_from_AFN(AFD_de_AFN)
+visual_AFD_from_AFN(AFD_de_AFN)
 
 
 exp_postfix_2 = exp_postfix
