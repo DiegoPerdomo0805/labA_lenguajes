@@ -16,6 +16,12 @@ class state:
     def addTransition(self, symbol, to):
         self.transitions[symbol] = to
 
+    def checkTransition(self, symbol):
+        if symbol in self.transitions:
+            return self.transitions[symbol]
+        else:
+            return None
+
 
 
 # Función para recorrer el AFN a partir de un estado inicial

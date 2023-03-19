@@ -57,6 +57,7 @@ def direct_build(tree, sigma, postfix):
                         # se crea la transición
                         if ArrayInArray(acu, e):
                             #temp = [e, e, postfix[i]]
+                            # Osea que la transición es a si mismo
                             temp = [e, postfix[i], e]
                         else:
                             #temp = [e, acu, postfix[i]]
