@@ -16,8 +16,10 @@ exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 #exp = '(a|b)*(a|(bb))*'
 #exp = 'ab*ab*'
 #exp = 'aab*'
-#exp = '(0|ε)((1|ε)|ε)0*'
-exp = 'ab*ab*'
+exp = '(0|ε)((1|ε)|ε)0*'
+exp = '((a|b)*)*ε((a|b)|ε)*'
+#exp = 'ab*ab*'
+#exp = '(a*|b*)*'
 #exp = '(10)*(10)*'
 #exp = '(a|b)*a(a|b)(a|b)'
 
@@ -63,10 +65,11 @@ AFD_directo = direct_build(tree, sigma, postfix)
 
 
 # apartado visual
-#visual_AFN(AFN)
-#visual_AFD_from_AFN(AFD_de_AFN)
-#visual_directAFD(AFD_directo)
+visual_AFN(AFN)
 
+visual_AFD_from_AFN(AFD_de_AFN)
+
+visual_directAFD(AFD_directo)
 
 # experimentos minimización
 print('\n')
@@ -88,8 +91,13 @@ for e in AFD_de_AFN:
         not_accept.append(e)
 
 
+
+
 groups.append(accept)
-groups.append(not_accept)
+if not_accept != []:
+    groups.append(not_accept)
+
+
 
 #print(groups)
 
@@ -114,7 +122,7 @@ def getTransitions(group, groups , sigma):
     return transitions
 
 
-
+#print(' - ',getTransitions(groups[0], groups, sigma))
 
 
 # subdivide los grupos en subgrupos si es que no son atómicos
@@ -125,7 +133,7 @@ def isAtomic(grupo, grupos, sigma):
     else:
         #transitions = []
         transitions = getTransitions(grupo, grupos, sigma)
-        print(transitions)
+        #print(transitions)
 
         first = transitions[grupo[0].name]
         #print(first)
@@ -139,14 +147,77 @@ def isAtomic(grupo, grupos, sigma):
 
         
     
-#def Divide(group, groups, sigma):
+def Divide(group, grupos, sigma):
+    subgroups = [group]
+    #print('subgroups', subgroups)
+    i = 0
+    while i < len(subgroups):
+        subgroup = subgroups[i]
+        if not isAtomic(subgroup, grupos, sigma):
+            transitions = getTransitions(subgroup, grupos, sigma)
+            #print(transitions.values())
+            for target_group in transitions.values():
+                new_subgroup = [s for s in subgroup if transitions[s.name] == target_group]
+                if new_subgroup not in subgroups:
+                    subgroups.append(new_subgroup)
+            subgroups.remove(subgroup)
+            i -= 1
+        i += 1
+    for e in subgroups:
+        if not isAtomic(e, groups, sigma):
+            #print('entré 159')
+            Divide(e, groups, sigma)
+    #return subgroups
+    #print('subgroups')
+    groups.remove(group)
+    groups.extend(subgroups)
+
+
     
 
+print(groups)
+print('\n')
 
+"""for e in groups:
+    #print(isAtomic(e, groups, sigma),'\n')
+    if isAtomic(e, groups, sigma):
+        print(e, 'es atómico')
+    else:
+        print(e, 'no es atómico')
+        Divide(e, groups, sigma)
+        #Divide(e, groups, sigma)
+        #print(groups)
+        #print('\n')
+print('\n')
+
+
+#Divide(groups[1], groups, sigma)
 
 for e in groups:
-    print(isAtomic(e, groups, sigma),'\n')
+    #print(isAtomic(e, groups, sigma),'\n')
+    if isAtomic(e, groups, sigma):
+        print(e, 'es atómico')
+    else:
+        print(e, 'no es atómico')
+        #Divide(e, groups, sigma)
+        #print(groups)
+        #print('\n')
 
- 
+print('\n')"""
 
 
+flag = True
+while flag:
+    for e in groups:
+        #print(isAtomic(e, groups, sigma),'\n')
+        if isAtomic(e, groups, sigma):
+            #print(e, 'es atómico')
+            flag = False
+        else:
+            #print(e, 'no es atómico')
+            Divide(e, groups, sigma)
+            flag = True
+            #print(groups)
+            #print('\n')
+
+print(groups)

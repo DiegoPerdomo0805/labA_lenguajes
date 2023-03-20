@@ -280,8 +280,8 @@ def InfixToPostfix(exp):
     if parenthesis_check(exp) and symbol_check(exp):
         print('La expresion regular es válida: ', exp)
         exp = trans(exp)
-        print('La expresion regular transformada es: ', exp)
         exp = readExp(exp)
+        print('La expresion regular transformada es: ', exp)
         #print(exp)
         OpStack = []
         postfix = []
