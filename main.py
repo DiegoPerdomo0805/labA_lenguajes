@@ -5,6 +5,8 @@ from BinaryTree import Node, operators, ArrayInArray, buildTree
 from AFN_to_AFD import AFD_from_AFN, state
 #exp = '(a|b)*a(a|b)(a|b)'
 from direct_AFD import direct_build, visual_directAFD
+from mini import Minimization, Minimizacion_Visual
+
 
 exp = 'a**(b|c)?*(da+)?a(c|d*)+'
 
@@ -62,6 +64,13 @@ AFD_directo = direct_build(tree, sigma, postfix)
 
 
 
+# minimización de AFD a partir del AFN
+AFD_minimizado = Minimization(AFD_de_AFN, sigma)
+
+# minimización de AFD directo
+AFD_directo_minimizado = Minimization(AFD_directo, sigma)
+
+
 
 
 # apartado visual
@@ -71,35 +80,18 @@ visual_AFD_from_AFN(AFD_de_AFN)
 
 visual_directAFD(AFD_directo)
 
+Minimizacion_Visual(AFD_minimizado, 'AFD a partir del AFN minimizado')
+
+Minimizacion_Visual(AFD_directo_minimizado, 'AFD directo minimizado')
+
+
+
 # experimentos minimización
-print('\n')
+
+"""
 
 
 
-# separar estados de aceptación y no aceptación
-#print(AFD_de_AFN)
-groups = []
-accept = []
-not_accept = []
-
-
-for e in AFD_de_AFN:
-
-    if e.isAccept:
-        accept.append(e)
-    else:
-        not_accept.append(e)
-
-
-
-
-groups.append(accept)
-if not_accept != []:
-    groups.append(not_accept)
-
-
-
-#print(groups)
 
 
 def getTransitions(group, groups , sigma):
@@ -164,60 +156,93 @@ def Divide(group, grupos, sigma):
             i -= 1
         i += 1
     for e in subgroups:
-        if not isAtomic(e, groups, sigma):
+        if not isAtomic(e, grupos, sigma):
             #print('entré 159')
-            Divide(e, groups, sigma)
+            Divide(e, grupos, sigma)
     #return subgroups
     #print('subgroups')
-    groups.remove(group)
-    groups.extend(subgroups)
+    grupos.remove(group)
+    grupos.extend(subgroups)
+
+"""
+
+# separar estados de aceptación y no aceptación
+#print(AFD_de_AFN)
+"""groups = []
+accept = []
+not_accept = []
 
 
-    
+for e in AFD_de_AFN:
 
-print(groups)
-print('\n')
-
-"""for e in groups:
-    #print(isAtomic(e, groups, sigma),'\n')
-    if isAtomic(e, groups, sigma):
-        print(e, 'es atómico')
+    if e.isAccept:
+        accept.append(e)
     else:
-        print(e, 'no es atómico')
-        Divide(e, groups, sigma)
-        #Divide(e, groups, sigma)
-        #print(groups)
-        #print('\n')
-print('\n')
+        not_accept.append(e)
 
 
-#Divide(groups[1], groups, sigma)
-
-for e in groups:
-    #print(isAtomic(e, groups, sigma),'\n')
-    if isAtomic(e, groups, sigma):
-        print(e, 'es atómico')
-    else:
-        print(e, 'no es atómico')
-        #Divide(e, groups, sigma)
-        #print(groups)
-        #print('\n')
-
-print('\n')"""
 
 
-flag = True
-while flag:
+groups.append(accept)
+if not_accept != []:
+    groups.append(not_accept)
+
+
+
+#print(groups)
+
+
+
+
+
+
+    flag = True
+    while flag:
+        for e in groups:
+            #print(isAtomic(e, groups, sigma),'\n')
+            if isAtomic(e, groups, sigma):
+                #print(e, 'es atómico')
+                flag = False
+            else:
+                #print(e, 'no es atómico')
+                Divide(e, groups, sigma)
+                flag = True
+                #print(groups)
+                #print('\n')
+
+    #print(groups)
+
+    # crear estados usando state class
+
+    from AFN_to_AFD import state
+
+
+    new_states = []
+    i = 0
     for e in groups:
-        #print(isAtomic(e, groups, sigma),'\n')
-        if isAtomic(e, groups, sigma):
-            #print(e, 'es atómico')
-            flag = False
-        else:
-            #print(e, 'no es atómico')
-            Divide(e, groups, sigma)
-            flag = True
-            #print(groups)
-            #print('\n')
+        new_states.append(state( f"q{i}", e))
+        i += 1
 
-print(groups)
+    for e in new_states:
+        #print(e.name)
+        for s in sigma:
+            transition = e.contains[0].transitions[s]
+            if transition != None:
+                for e2 in new_states:
+                    if transition in e2.contains:
+                        e.addTransition(s, e2)
+
+            else:
+                e.addTransition(s, None)
+
+
+
+
+for e in new_states:
+    print(e.name)
+    for t in e.transitions:
+        print(t, e.transitions[t].name)
+"""
+
+#for e in new_states:
+    

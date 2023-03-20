@@ -1,0 +1,15 @@
+// AFD_from_AFN
+digraph {
+	node [shape=circle]
+	node [style=filled]
+	node [color=lightblue2]
+	node [fontcolor=black]
+	edge [color=black]
+	edge [fontcolor=black]
+	edge [fontsize=20]
+	graph [rankdir=LR]
+	graph [size=17]
+	q0 [label=q0]
+	q0 -> q0 [label=a]
+	q0 -> q0 [label=b]
+}
