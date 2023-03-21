@@ -9,7 +9,9 @@ digraph {
 	edge [fontsize=20]
 	graph [rankdir=LR]
 	graph [size=17]
-	S0 [label=S0 shape=doublecircle]
+	S0 [label=S0]
 	S0 -> S0 [label=a]
 	S0 -> S0 [label=b]
+	S0 -> S1 [label=c]
+	S1 [label=S1 shape=doublecircle]
 }

@@ -124,7 +124,9 @@ def Minimization(AFD, sigma):
     for e in new_states:
         #print(e.name)
         for s in sigma:
-            transition = e.contains[0].transitions[s]
+            transition = None
+            if e.contains[0].checkTransition(s) != None:
+                transition = e.contains[0].transitions[s]
             if transition != None:
                 for e2 in new_states:
                     if transition in e2.contains:
