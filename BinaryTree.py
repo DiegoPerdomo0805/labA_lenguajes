@@ -1,5 +1,5 @@
 # implementar validación para el símbolo epsilon
-
+import graphviz
 
 class Node:
     def __init__(self, key, right=None, left=None, pos=None):
@@ -143,6 +143,38 @@ class Node:
             if self.right.searchPos(pos):
                 return self.right.searchPos(pos)
         return None
+    
+    def searchByVal(self, val):
+        if self.val == val:
+            return self.pos
+        if self.left:
+            if self.left.searchByVal(val):
+                return self.left.searchByVal(val)
+        if self.right:
+            if self.right.searchByVal(val):
+                return self.right.searchByVal(val)
+        return None
+    
+    def generate_graph(self):
+        dot = graphviz.Digraph()
+        
+        def traverse(node):
+            if node is None:
+                return
+            
+            dot.node(str(id(node)), label=f'Value: {node.val}\nPosition: {node.pos}\nFirstPos: {node.first_pos}\nLastPos: {node.last_pos}\nFollowPos: {node.follow_pos}')
+            
+            if node.left:
+                traverse(node.left)
+                dot.edge(str(id(node)), str(id(node.left)), label='Left')
+            
+            if node.right:
+                traverse(node.right)
+                dot.edge(str(id(node)), str(id(node.right)), label='Right')
+        
+        traverse(self)
+        
+        return dot
 
 
 operators = ['*', '|', '.']

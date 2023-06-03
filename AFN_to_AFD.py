@@ -41,7 +41,7 @@ def recorrido_epsilon(inicio, lista):
 def new_state(symbol, lista):
     temp = []
     for e in lista:
-        if e.checkTransition(symbol) != None:
+        if e.checkTransition(symbol) != None:            
             temp_state = e.checkTransition(symbol)
             temp.append(temp_state)
             recorrido_epsilon(temp_state, temp)
@@ -72,36 +72,48 @@ def AFD_from_AFN(AFN, sigma):
     i = 1
 
     for e in states:
+        #print("Estado: ", e.name)
         for symbol in sigma:
             new = new_state(symbol, e.contains)
 
             # si el nuevo estado no está en la lista de estados y no
 
-            if new not in estados_content and new != []:
+            #if new not in estados_content and new != []:
+            if new != []:
+                if new not in estados_content:
 
 
-                #estados.append(new)
-                n_state = state(f"S{i}", new)
-                if end in new:
-                    n_state.isAccept = True
-                e.addTransition(symbol, n_state)
-                states.append(n_state)
-                estados_content.append(new)
-            else:
-                if new != []: # si el estado no es vacío, quiere dec
-                    for i in range(len(estados_content)):
-                        if estados_content[i] == new:
-                            e.addTransition(symbol, states[i])
-                            """break
-                    e.addTransition(symbol, None)"""
+                    #estados.append(new)
+                    n_state = state(f"S{i}", new)
+                    if end in new:
+                        n_state.isAccept = True
+                    e.addTransition(symbol, n_state)
+                    states.append(n_state)
+                    estados_content.append(new)
+                    i += 1
                 else:
-                    e.addTransition(symbol, None)
-            i += 1
+                    index = estados_content.index(new)
+                    e.addTransition(symbol, states[index])
+            #else:
+                #if new != []: # si el estado no es vacío, quiere dec
+                    #for i in range(len(estados_content)):
+                   #     if estados_content[i] == new:
+                  #          e.addTransition(symbol, states[i])
+                 #           #break
+                    #e.addTransition(symbol, None)
+                #else:
+                    #e.addTransition(symbol, None)
+            else:
+                #index = estados_content.index(new)
+                e.addTransition(symbol, None)
+                
+
+            #i += 1
                 #e.addTransition(symbol, new)
 
     return states
 
-def visual_AFD_from_AFN(AFN):
+def visual_AFD_from_AFN(AFN, exp):
     g = graphviz.Digraph(comment='AFD_from_AFN', format='png')
     g.attr('node', shape='circle')
     g.attr('node', style='filled')
@@ -112,6 +124,8 @@ def visual_AFD_from_AFN(AFN):
     g.attr('edge', fontsize='20')
     g.attr('graph', rankdir='LR')
     g.attr('graph', size='17')
+
+    g.attr(label=exp)
 
 
     for e in AFN:

@@ -41,14 +41,17 @@ def isAtomic(grupo, grupos, sigma):
         #print(transitions)
 
         first = transitions[grupo[0].name]
+
+        flag = True
         #print(first)
         for i in range(1, len(grupo)):
             temp = transitions[grupo[i].name]
             #print(temp)
             #print(temp == first)
             if temp  != first:  
-                return False
-        return True
+                flag = False
+        
+        return flag
 
         
     
@@ -60,7 +63,8 @@ def Divide(group, grupos, sigma):
         subgroup = subgroups[i]
         if not isAtomic(subgroup, grupos, sigma):
             transitions = getTransitions(subgroup, grupos, sigma)
-            #print(transitions.values())
+            #for e in transitions:
+            #    print( ' - ', e, transitions[e])
             for target_group in transitions.values():
                 new_subgroup = [s for s in subgroup if transitions[s.name] == target_group]
                 if new_subgroup not in subgroups:
@@ -76,8 +80,23 @@ def Divide(group, grupos, sigma):
     #print('subgroups')
     grupos.remove(group)
     grupos.extend(subgroups)
+    #print('grupos')
+    #for e in grupos:
+    #    temp = []
+    #    for f in e:
+    #        temp.append(f.name)
+    #        #print(f.name, end=' ')
+    #    #print('\n')
+    #    print(temp)
 
 
+
+def allAtomic(grupos, sigma):
+    flag = True
+    for e in grupos:
+        if not isAtomic(e, grupos, sigma):
+            flag = False
+    return flag
 
 
 def Minimization(AFD, sigma):
@@ -94,18 +113,25 @@ def Minimization(AFD, sigma):
     if not_accept != []:
         groups.append(not_accept)
 
-
+    #print('grupos iniciales')
+    #for e in groups:
+    #    temp = []
+    #    for f in e:
+    #        temp.append(f.name)
+    #        #print(f.name, end=' ')
+    #    #print('\n')
+    #    print(temp)
     flag = True
     while flag:
-        for e in groups:
+        for e in list(groups):
             #print(isAtomic(e, groups, sigma),'\n')
             if isAtomic(e, groups, sigma):
                 #print(e, 'es atómico')
-                flag = False
+                flag = not allAtomic(groups, sigma)
             else:
                 #print(e, 'no es atómico')
                 Divide(e, groups, sigma)
-                flag = True
+                flag = not allAtomic(groups, sigma)
                 #print(groups)
                 #print('\n')
     
@@ -135,10 +161,17 @@ def Minimization(AFD, sigma):
             else:
                 e.addTransition(s, None)
 
+    # aceptación
+    for e in new_states:
+        for e2 in e.contains:
+            if e2.isAccept:
+                e.isAccept = True
+                break
+
     return new_states
 
 
-def Minimizacion_Visual(AFD, metodo):
+def Minimizacion_Visual(AFD, metodo, exp):
     g = graphviz.Digraph(comment='AFD_from_AFN', format='png')
     g.attr('node', shape='circle')
     g.attr('node', style='filled')
@@ -149,6 +182,7 @@ def Minimizacion_Visual(AFD, metodo):
     g.attr('edge', fontsize='20')
     g.attr('graph', rankdir='LR')
     g.attr('graph', size='17')
+    g.attr(label=exp)
 
 
     for e in AFD:

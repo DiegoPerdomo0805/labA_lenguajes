@@ -1,0 +1,42 @@
+// Firstpos and lastpos of a regular expression
+
+For leaf nodes:
+    firstpos: Contains the position of the leaf node.
+    lastpos: Contains the position of the leaf node.
+For the * (Kleene star) operator:
+    firstpos: Same as the firstpos of the subexpression.
+    lastpos: Same as the lastpos of the subexpression.
+For the . (concatenation) operator:
+    firstpos: Same as the firstpos of the left subexpression, unless the left subexpression is nullable, in which case it includes the firstpos of both subexpressions.
+    lastpos: Same as the lastpos of the right subexpression, unless the right subexpression is nullable, in which case it includes the lastpos of both subexpressions.
+For the | (union) operator:
+    firstpos: Includes the firstpos of both subexpressions.
+    lastpos: Includes the lastpos of both subexpressions.   
+
+// nullable
+
+Union (|): 
+    The union of two regular expressions is nullable if either of the expressions is nullable. For example, if A and B are regular expressions, and A is nullable 
+    (A can match an empty string) or B is nullable, then A | B is nullable.
+
+Kleene Star (*): 
+    The Kleene star operator allows zero or more repetitions of the preceding expression. It is always nullable since it can match an empty string. For example, 
+    if A is a regular expression, then A* is nullable.
+
+Grouping ( ): 
+    Grouping does not affect the nullability itself, but it can influence the nullability of the expressions inside the group. If the expressions inside the group 
+    are nullable, then the group as a whole can be nullable.
+
+// followpos
+
+Concatenation (.): 
+    The followpos of a concatenation is the followpos of the right subexpression. For example, if A and B are regular expressions, then the followpos of A.B is 
+    the followpos of B.
+    for i in self.left.lastpos:
+        self.followpos[i] += self.right.firstpos
+
+Kleene Star (*):
+    The followpos of a Kleene star is the followpos of the expression inside the Kleene star. For example, if A is a regular expression, then the followpos of A* 
+    is the followpos of A.
+    for i in self.lastpos:
+        self.followpos[i] += self.firstpos

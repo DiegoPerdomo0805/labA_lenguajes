@@ -399,3 +399,16 @@ def InfixToPostfix(exp):
 #           print(symbol_check(e))
 #       else:
 #           print('La expresión regular no es válida')#   
+
+
+
+
+#exp = '(ba)?'
+"""exp = '0(0|1)*0'
+
+print('Expresión regular: ', exp)
+print('Expresión regular en forma expandida: ', readExp(exp))
+print('Expresión regular en forma simplificada: ', trans2(exp))
+print('Expresión regular en forma simplificada expandida: ',  readExp(trans2(exp))) # correcto
+print('Expresión regular en forma expandida simplificada', trans2(readExp(exp)))
+"""

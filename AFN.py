@@ -113,7 +113,7 @@ def generateAFN(regex):
 
 
 
-def visual_AFN(NFA):
+def visual_AFN(NFA, exp):
     g = gv.Digraph(format='png')
     g.attr('node', shape='circle')
     g.attr('node', style='filled')
@@ -124,6 +124,9 @@ def visual_AFN(NFA):
     g.attr('edge', fontsize='20')
     g.attr('graph', rankdir='LR')
     g.attr('graph', size='17')
+
+    # add a title to the graph
+    g.attr(label=exp)
     
     # agregamos los nodos
     estados = []
