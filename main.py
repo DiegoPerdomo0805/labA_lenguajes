@@ -26,22 +26,59 @@ from mini import Minimization, Minimizacion_Visual
 #exp = '(a|b)*a(a|b)(a|b)'
 
 exps = [
-    '(a*|b*)c',# 0
-    '(b|b)*abb(a|b)*',# 1
-    '(a|ε)ba+c?',# 2 
-    '(a|b)*a(a|b)(a|b)',# 3 - problema con directo
-    'b*ab?',# 4 
-    'b+abc+',# 5
-    'ab*ab*',# 6
-    '0(0|1)*0',# 7 
-    '((ε|0)1*)*',# 8 
-    '(0|1)*0(0|1)(0|1)',# 9 - es la misma expresión que la 3 pero con diferencte alfabeto
-    '(00)*(11)*',# 10 
-    '(0|1)1*(0|1)',# 11
-    '0?(1|ε)?0*',# 12
-    '(1?*)*',# 13
-    '(10)*(10)'# 14
+    '(a*|b*)c',
+    '(b|b)*abb(a|b)*',
+    '(a|ε)ba+c?',
+    '(a|b)*a(a|b)(a|b)',
+    'b*ab?',
+    'b+abc+',
+    'ab*ab*',
+    '0(0|1)*0',
+    '((ε|0)1*)*',
+    '(0|1)*0(0|1)(0|1)',
+    '(00)*(11)*',
+    '(0|1)1*(0|1)',
+    '0?(1|ε)?0*',
+    '(1?*)*',
+    '(10)*(10)'
 ]
+
+# pruebas
+strings = [
+    # '(a*|b*)c'
+    ["aac", "bbbc", "c", "ac"],
+    # '(b|b)*abb(a|b)*'
+    ["abb", "babbaa", "abb", "bbabb"],
+    # '(a|ε)ba+c?'
+    ["ba", "abaac", "ba", "baa"],
+    # '(a|b)*a(a|b)(a|b)'
+    ["aabab", "baaab", "aa", "abaa"],
+    # 'b*ab?'
+    ["aa", "bbb", "b", "ab"],
+    # 'b+abc+'
+    ["bc", "bbbc", "babc", "babc"],
+    # 'ab*ab*'
+    ["aba", "abbbb", "abab", "ab"],
+    # '0(0|1)*0'
+    ["0101", "001", "00", "010"],
+    # '((ε|0)1*)*'
+    ["11", "100", "", "01010"],
+    # '(0|1)*0(0|1)(0|1)'
+    ["1010", "001", "010", "0100"],
+    # '(00)*(11)*'
+    ["001100", "000111", "", "0011"],
+    # '(0|1)1*(0|1)'
+    ["111", "01010", "101", "1111"],
+    # '0?(1|ε)?0*'
+    ["100100", "101", "000", "010"],
+    # '(1?*)*'
+    ["111", "01010", "", "1"],
+    # '(10)*(10)'
+    ["1010", "10101", "10", "1010"]
+]
+
+
+
 
 def main(exp):
     #exp = '(ba)?'
@@ -112,6 +149,11 @@ def main(exp):
     print(AFD_directo_minimizado)
     """
 
+    return AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp
+
+    
+
+def visualRepresentation(AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp):
     Minimizacion_Visual(AFD_directo_minimizado, 'direct_AFD_minimizado', exp)
     Minimizacion_Visual(AFD_minimizado, 'AFD a partir del AFN minimizado', exp)
     visual_directAFD(AFD_directo, exp)
@@ -121,12 +163,141 @@ def main(exp):
     arbol.render('arbol', view=True, directory='./visual_results/', cleanup=True, format='png')
 
 
+def writeLog(bitacora, nombre):
+    with open(nombre, 'w', encoding='utf-8') as f:
+        f.write(bitacora)
+
+
+
 import time
+from AFN_to_AFD import simulation, minimizedSimulation
+#for exp in exps:
+#    AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp = main(exp)
+#    visualRepresentation(AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp)
 
-for exp in exps:
-    print('-'*50)
-    main(exp)
-    print('-'*50)
-    time.sleep(20)
 
-#main(exps[0])
+print(' # '*50)
+bitacora = ""
+for reg in range(0, len(exps)):
+    AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp = main(exps[reg])
+    visualRepresentation(AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp)
+    bitacora += "Expresión regular: " + exp + "\n\n"
+    for test in strings[reg]:
+        print('Cadena de prueba: ' + test + '\n')
+        bitacora += "Cadena de prueba: " + test + "\n"
+        AFD_Result, Tbitacora = simulation(AFD_de_AFN[0], test)
+        bitacora += "AFD a partir del AFN" + "\n"
+        bitacora += Tbitacora
+        bitacora += " - Cadena aceptada" if AFD_Result else " - Cadena no aceptada"
+        bitacora += "\n\n"
+        print(' AFN a AFD: ' + str(AFD_Result))
+
+        AFD_Result, Tbitacora = simulation(AFD_directo[0], test)
+        bitacora += "AFD directo" + "\n"
+        bitacora += Tbitacora
+        bitacora += " - Cadena aceptada" if AFD_Result else " - Cadena no aceptada"
+        bitacora += "\n\n"
+        print(' AFD directo: ' + str(AFD_Result))
+
+        AFD_Result, Tbitacora = minimizedSimulation(AFD_minimizado, test)
+        bitacora += "AFD a partir del AFN minimizado" + "\n"
+        bitacora += Tbitacora
+        bitacora += " - Cadena aceptada" if AFD_Result else " - Cadena no aceptada"
+        bitacora += "\n\n"
+        print(' AFD a partir del AFN minimizado: ' + str(AFD_Result))
+
+        AFD_Result, Tbitacora = minimizedSimulation(AFD_directo_minimizado, test)
+        bitacora += "AFD directo minimizado" + "\n"
+        bitacora += Tbitacora
+        bitacora += " - Cadena aceptada" if AFD_Result else " - Cadena no aceptada"
+        bitacora += "\n\n"
+        print(' AFD directo minimizado: ' + str(AFD_Result))
+
+        print(' - ' * 50)
+        time.sleep(1)
+    bitacora += " - " * 50 + "\n\n"
+    print(' # '*50)
+    time.sleep(10)
+    #time.sleep(30)
+
+writeLog(bitacora, 'simulaciones.txt')
+
+
+"""
+pos = 0
+accepted = False
+flag = True
+print('regex: ', exp)
+print('test: ', dummy_test)
+while flag:
+    #print('Current state: ', current_state.name)
+    #print('Current char: ', dummy_test[pos])
+    if dummy_test[pos] in current_state.transitions:
+        current_state = current_state.transitions[dummy_test[pos]]
+        pos += 1
+    else:
+        flag = False
+    #print('-'*50)
+    if pos == len(dummy_test) and current_state.isAccept:
+        accepted = True
+        flag = False
+
+if accepted:
+    print(' - String accepted')
+else:
+    print(' - String not accepted')
+"""
+"""print(' / ' * 50)
+
+for e in AFD_directo:
+    print(e)
+    print(e.name, e.isAccept, e.transitions)
+    print(e.contains)
+    print(e.isInitial)
+    print(' - ' * 50)
+
+print(' / ' * 50)
+
+
+
+for e in AFD_directo_minimizado:
+    print(e)
+    print(e.name, e.isAccept, e.transitions)
+    print(e.contains)
+    print(e.isInitial)
+    print(' - ' * 50)
+
+print(' - ' * 50)
+"""
+
+
+# cual = 4
+# 
+# AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp = main(exps[cual])
+# #visualRepresentation(AFN, AFD_de_AFN, AFD_directo, AFD_minimizado, AFD_directo_minimizado, arbol, exp)
+# dummy_test = strings[cual][0]
+# print('Cadena de prueba: ' + dummy_test + '\n')
+# print(' / ' * 50)
+# AFD_result, bitacora = simulation(AFD_de_AFN[0], dummy_test)
+# bitacora += ' - Cadena aceptada? ' + str(AFD_result)
+# print(bitacora)
+# print('AFD de AFN: ')
+# print(' - ', AFD_result)
+# print()
+# AFD_d_result, bitacora = simulation(AFD_directo[0], dummy_test)
+# bitacora += ' - Cadena aceptada? ' + str(AFD_d_result)
+# print(bitacora)
+# print('AFD directo: ')
+# print(' - ', AFD_d_result)
+# print()
+# AFD_min_result, bitacora = minimizedSimulation(AFD_minimizado, dummy_test)
+# bitacora += ' - Cadena aceptada? ' + str(AFD_min_result)
+# print(bitacora)
+# print('AFD minimizado: ')
+# print(' - ', AFD_min_result)
+# print()
+# AFD_directo_min_result, bitacora = minimizedSimulation(AFD_directo_minimizado, dummy_test)
+# bitacora += ' - Cadena aceptada? ' + str(AFD_directo_min_result)
+# print(bitacora)
+# print('AFD directo minimizado: ')
+# print(' - ', AFD_directo_min_result)

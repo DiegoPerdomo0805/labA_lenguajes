@@ -138,13 +138,18 @@ def Minimization(AFD, sigma):
     #print(groups)
     
     # crear estados usando state class
-    
+    inicial = AFD[0]
+    #print('  ** inicial', inicial.name, inicial)
     
     
     new_states = []
     i = 0
     for e in groups:
-        new_states.append(state( f"q{i}", e))
+        #print( '  **  ' , e)
+        new_s = state( f"q{i}", e)
+        if inicial in e:
+            new_s.isInitial = True
+        new_states.append(new_s)
         i += 1
     
     for e in new_states:

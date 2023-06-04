@@ -8,6 +8,7 @@ class state:
         self.contains = contains
         self.transitions = {}
         self.isAccept = False
+        self.isInitial = False
 
     def isAccept(self, end):
         if end in self.contains:
@@ -112,6 +113,49 @@ def AFD_from_AFN(AFN, sigma):
                 #e.addTransition(symbol, new)
 
     return states
+
+
+import time
+
+def simulation(AFD, string):
+    current_state = AFD
+    pos = 0
+    accepted = False
+    flag = True
+    bitacora = ""
+    #print(len(string))
+    while flag:
+        #time.sleep(3)
+        if pos < len(string):
+            #print("Pos: ", pos)
+            #print("Current state: ", current_state.name)
+            #print('Current char: ', string[pos])
+            #print("Transitions: ", current_state.transitions)
+            bitacora += "Pos: " + str(pos) + "\n"
+            bitacora += "Current state: " + current_state.name + "\n"
+            bitacora += "Current char: " + string[pos] + "\n"
+            if string[pos] in current_state.transitions:
+                if current_state.transitions[string[pos]] != None:
+                    current_state = current_state.transitions[string[pos]]
+                    pos += 1
+                else:
+                    flag = False
+            else:
+                flag = False
+        elif pos == len(string) and current_state.isAccept:
+            accepted = True
+            flag = False
+        else:
+            flag = False
+
+    return accepted, bitacora
+
+
+def minimizedSimulation(AFD, string):
+    for e in AFD:
+        if e.isInitial:
+            return simulation(e, string)
+
 
 def visual_AFD_from_AFN(AFN, exp):
     g = graphviz.Digraph(comment='AFD_from_AFN', format='png')

@@ -9,11 +9,11 @@ digraph {
 	edge [fontsize=20]
 	graph [rankdir=LR]
 	graph [size=17]
-	label="(10)*(10)"
+	label="b*ab?"
 	S0 [label=S0]
-	S0 -> S1 [label=1]
-	S1 [label=S1]
-	S1 -> S2 [label=0]
+	S0 -> S0 [label=b]
+	S0 -> S1 [label=a]
+	S1 [label=S1 shape=doublecircle]
+	S1 -> S2 [label=b]
 	S2 [label=S2 shape=doublecircle]
-	S2 -> S1 [label=1]
 }

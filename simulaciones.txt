@@ -1,0 +1,3084 @@
+Expresión regular: (a*|b*)c
+
+Cadena de prueba: aac
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S1
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S1
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: a
+Pos: 2
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: a
+Pos: 2
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+Cadena de prueba: bbbc
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: b
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S2
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: b
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S2
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q3
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+Pos: 3
+Current state: q3
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q3
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+Pos: 3
+Current state: q3
+Current char: c
+ - Cadena aceptada
+
+Cadena de prueba: c
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: c
+ - Cadena aceptada
+
+Cadena de prueba: ac
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (b|b)*abb(a|b)*
+
+Cadena de prueba: abb
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S2
+Current char: b
+Pos: 2
+Current state: S3
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+Cadena de prueba: babbaa
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S3
+Current char: b
+Pos: 4
+Current state: S4
+Current char: a
+Pos: 5
+Current state: S6
+Current char: a
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S0
+Current char: a
+Pos: 2
+Current state: S1
+Current char: b
+Pos: 3
+Current state: S2
+Current char: b
+Pos: 4
+Current state: S3
+Current char: a
+Pos: 5
+Current state: S3
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q2
+Current char: b
+Pos: 3
+Current state: q3
+Current char: b
+Pos: 4
+Current state: q0
+Current char: a
+Pos: 5
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q2
+Current char: b
+Pos: 3
+Current state: q3
+Current char: b
+Pos: 4
+Current state: q0
+Current char: a
+Pos: 5
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+Cadena de prueba: abb
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S2
+Current char: b
+Pos: 2
+Current state: S3
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+Cadena de prueba: bbabb
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: a
+Pos: 3
+Current state: S2
+Current char: b
+Pos: 4
+Current state: S3
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S0
+Current char: b
+Pos: 2
+Current state: S0
+Current char: a
+Pos: 3
+Current state: S1
+Current char: b
+Pos: 4
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q1
+Current char: b
+Pos: 2
+Current state: q1
+Current char: a
+Pos: 3
+Current state: q2
+Current char: b
+Pos: 4
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q1
+Current char: b
+Pos: 2
+Current state: q1
+Current char: a
+Pos: 3
+Current state: q2
+Current char: b
+Pos: 4
+Current state: q3
+Current char: b
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (a|ε)ba+c?
+
+Cadena de prueba: ba
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+ - Cadena aceptada
+
+Cadena de prueba: abaac
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: a
+Pos: 3
+Current state: S3
+Current char: a
+Pos: 4
+Current state: S4
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: a
+Pos: 3
+Current state: S3
+Current char: a
+Pos: 4
+Current state: S3
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: a
+Pos: 1
+Current state: q3
+Current char: b
+Pos: 2
+Current state: q4
+Current char: a
+Pos: 3
+Current state: q0
+Current char: a
+Pos: 4
+Current state: q0
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: a
+Pos: 1
+Current state: q3
+Current char: b
+Pos: 2
+Current state: q4
+Current char: a
+Pos: 3
+Current state: q0
+Current char: a
+Pos: 4
+Current state: q0
+Current char: c
+ - Cadena aceptada
+
+Cadena de prueba: ba
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+ - Cadena aceptada
+
+Cadena de prueba: baa
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+Pos: 2
+Current state: S3
+Current char: a
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+Pos: 2
+Current state: S3
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+Pos: 2
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: b
+Pos: 1
+Current state: q4
+Current char: a
+Pos: 2
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (a|b)*a(a|b)(a|b)
+
+Cadena de prueba: aabab
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S3
+Current char: b
+Pos: 3
+Current state: S6
+Current char: a
+Pos: 4
+Current state: S7
+Current char: b
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S1
+Current char: b
+Pos: 3
+Current state: S2
+Current char: a
+Pos: 4
+Current state: S1
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: a
+Pos: 1
+Current state: q7
+Current char: a
+Pos: 2
+Current state: q0
+Current char: b
+Pos: 3
+Current state: q3
+Current char: a
+Pos: 4
+Current state: q4
+Current char: b
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q0
+Current char: a
+Pos: 2
+Current state: q0
+Current char: b
+Pos: 3
+Current state: q0
+Current char: a
+Pos: 4
+Current state: q0
+Current char: b
+ - Cadena aceptada
+
+Cadena de prueba: baaab
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+Pos: 2
+Current state: S1
+Current char: a
+Pos: 3
+Current state: S3
+Current char: a
+Pos: 4
+Current state: S5
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S2
+Current char: a
+Pos: 2
+Current state: S1
+Current char: a
+Pos: 3
+Current state: S1
+Current char: a
+Pos: 4
+Current state: S1
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: b
+Pos: 1
+Current state: q6
+Current char: a
+Pos: 2
+Current state: q7
+Current char: a
+Pos: 3
+Current state: q0
+Current char: a
+Pos: 4
+Current state: q2
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: b
+Pos: 1
+Current state: q0
+Current char: a
+Pos: 2
+Current state: q0
+Current char: a
+Pos: 3
+Current state: q0
+Current char: a
+Pos: 4
+Current state: q0
+Current char: b
+ - Cadena aceptada
+
+Cadena de prueba: aa
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: a
+Pos: 1
+Current state: q7
+Current char: a
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+Cadena de prueba: abaa
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S4
+Current char: a
+Pos: 3
+Current state: S7
+Current char: a
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: a
+Pos: 3
+Current state: S1
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: a
+Pos: 1
+Current state: q7
+Current char: b
+Pos: 2
+Current state: q1
+Current char: a
+Pos: 3
+Current state: q4
+Current char: a
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q0
+Current char: b
+Pos: 2
+Current state: q0
+Current char: a
+Pos: 3
+Current state: q0
+Current char: a
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: b*ab?
+
+Cadena de prueba: aa
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S2
+Current char: a
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: a
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: a
+Pos: 1
+Current state: q1
+Current char: a
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: a
+Pos: 1
+Current state: q1
+Current char: a
+ - Cadena no aceptada
+
+Cadena de prueba: bbb
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: b
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S0
+Current char: b
+Pos: 2
+Current state: S0
+Current char: b
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: b
+Pos: 1
+Current state: q0
+Current char: b
+Pos: 2
+Current state: q0
+Current char: b
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: b
+Pos: 1
+Current state: q0
+Current char: b
+Pos: 2
+Current state: q0
+Current char: b
+ - Cadena no aceptada
+
+Cadena de prueba: b
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: b
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: b
+ - Cadena no aceptada
+
+Cadena de prueba: ab
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: a
+Pos: 1
+Current state: q1
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: a
+Pos: 1
+Current state: q1
+Current char: b
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: b+abc+
+
+Cadena de prueba: bc
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: c
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: c
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: c
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: c
+ - Cadena no aceptada
+
+Cadena de prueba: bbbc
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S2
+Current char: c
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: b
+Pos: 3
+Current state: S1
+Current char: c
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: b
+Pos: 2
+Current state: q1
+Current char: b
+Pos: 3
+Current state: q1
+Current char: c
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: b
+Pos: 2
+Current state: q1
+Current char: b
+Pos: 3
+Current state: q1
+Current char: c
+ - Cadena no aceptada
+
+Cadena de prueba: babc
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S3
+Current char: b
+Pos: 3
+Current state: S4
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S3
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q4
+Current char: b
+Pos: 3
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q4
+Current char: b
+Pos: 3
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+Cadena de prueba: babc
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S3
+Current char: b
+Pos: 3
+Current state: S4
+Current char: c
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: b
+Pos: 1
+Current state: S1
+Current char: a
+Pos: 2
+Current state: S2
+Current char: b
+Pos: 3
+Current state: S3
+Current char: c
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q4
+Current char: b
+Pos: 3
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q3
+Current char: b
+Pos: 1
+Current state: q1
+Current char: a
+Pos: 2
+Current state: q4
+Current char: b
+Pos: 3
+Current state: q2
+Current char: c
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: ab*ab*
+
+Cadena de prueba: aba
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S3
+Current char: a
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: a
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: a
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: a
+ - Cadena aceptada
+
+Cadena de prueba: abbbb
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S3
+Current char: b
+Pos: 3
+Current state: S3
+Current char: b
+Pos: 4
+Current state: S3
+Current char: b
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: b
+Pos: 3
+Current state: S1
+Current char: b
+Pos: 4
+Current state: S1
+Current char: b
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: b
+Pos: 3
+Current state: q2
+Current char: b
+Pos: 4
+Current state: q2
+Current char: b
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: b
+Pos: 3
+Current state: q2
+Current char: b
+Pos: 4
+Current state: q2
+Current char: b
+ - Cadena no aceptada
+
+Cadena de prueba: abab
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S3
+Current char: a
+Pos: 3
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+Pos: 2
+Current state: S1
+Current char: a
+Pos: 3
+Current state: S2
+Current char: b
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: a
+Pos: 3
+Current state: q0
+Current char: b
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+Pos: 2
+Current state: q2
+Current char: a
+Pos: 3
+Current state: q0
+Current char: b
+ - Cadena aceptada
+
+Cadena de prueba: ab
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: a
+Pos: 1
+Current state: S1
+Current char: b
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: a
+Pos: 1
+Current state: q2
+Current char: b
+ - Cadena no aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: 0(0|1)*0
+
+Cadena de prueba: 0101
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S3
+Current char: 0
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S1
+Current char: 0
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q2
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q2
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 001
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 00
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S3
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: ((ε|0)1*)*
+
+Cadena de prueba: 11
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+Cadena de prueba: 100
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 
+AFD a partir del AFN
+ - Cadena aceptada
+
+AFD directo
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+ - Cadena aceptada
+
+AFD directo minimizado
+ - Cadena aceptada
+
+Cadena de prueba: 01010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S2
+Current char: 0
+Pos: 3
+Current state: S1
+Current char: 1
+Pos: 4
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S1
+Current char: 0
+Pos: 3
+Current state: S1
+Current char: 1
+Pos: 4
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+Pos: 4
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+Pos: 4
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (0|1)*0(0|1)(0|1)
+
+Cadena de prueba: 1010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S1
+Current char: 1
+Pos: 3
+Current state: S4
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S1
+Current char: 1
+Pos: 3
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: 1
+Pos: 1
+Current state: q6
+Current char: 0
+Pos: 2
+Current state: q7
+Current char: 1
+Pos: 3
+Current state: q1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 001
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S1
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: 0
+Pos: 1
+Current state: q7
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+Cadena de prueba: 010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S4
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: 0
+Pos: 1
+Current state: q7
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 0100
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S4
+Current char: 0
+Pos: 3
+Current state: S7
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S2
+Current char: 0
+Pos: 3
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q6
+Current char: 0
+Pos: 1
+Current state: q7
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 0
+Pos: 3
+Current state: q4
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (00)*(11)*
+
+Cadena de prueba: 001100
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 1
+Pos: 3
+Current state: S2
+Current char: 1
+Pos: 4
+Current state: S4
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S0
+Current char: 1
+Pos: 3
+Current state: S2
+Current char: 1
+Pos: 4
+Current state: S3
+Current char: 0
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q3
+Current char: 1
+Pos: 4
+Current state: q1
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q3
+Current char: 1
+Pos: 4
+Current state: q1
+Current char: 0
+ - Cadena no aceptada
+
+Cadena de prueba: 000111
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 0
+Pos: 3
+Current state: S1
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S0
+Current char: 0
+Pos: 3
+Current state: S1
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q2
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q2
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 
+AFD a partir del AFN
+ - Cadena aceptada
+
+AFD directo
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+ - Cadena aceptada
+
+AFD directo minimizado
+ - Cadena aceptada
+
+Cadena de prueba: 0011
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 1
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S0
+Current char: 1
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q3
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q3
+Current char: 1
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (0|1)1*(0|1)
+
+Cadena de prueba: 111
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 1
+Pos: 2
+Current state: S4
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S3
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 1
+ - Cadena aceptada
+
+Cadena de prueba: 01010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S4
+Current char: 0
+Pos: 3
+Current state: S3
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S3
+Current char: 0
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: 0
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: 0
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 101
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 1111
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 1
+Pos: 2
+Current state: S4
+Current char: 1
+Pos: 3
+Current state: S4
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S3
+Current char: 1
+Pos: 3
+Current state: S3
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 1
+Pos: 3
+Current state: q1
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q2
+Current char: 1
+Pos: 1
+Current state: q3
+Current char: 1
+Pos: 2
+Current state: q1
+Current char: 1
+Pos: 3
+Current state: q1
+Current char: 1
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: 0?(1|ε)?0*
+
+Cadena de prueba: 100100
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 0
+Pos: 3
+Current state: S3
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 0
+Pos: 3
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+Pos: 3
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 101
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S2
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 000
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S3
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S2
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 0
+Pos: 1
+Current state: q2
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 0
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (1?*)*
+
+Cadena de prueba: 111
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S1
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 1
+Pos: 2
+Current state: S1
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+Pos: 1
+Current state: q0
+Current char: 1
+Pos: 2
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+Cadena de prueba: 01010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 0
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 0
+ - Cadena no aceptada
+
+Cadena de prueba: 
+AFD a partir del AFN
+ - Cadena aceptada
+
+AFD directo
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+ - Cadena aceptada
+
+AFD directo minimizado
+ - Cadena aceptada
+
+Cadena de prueba: 1
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q0
+Current char: 1
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+
+Expresión regular: (10)*(10)
+
+Cadena de prueba: 1010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 10101
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+Pos: 4
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+Pos: 4
+Current state: S2
+Current char: 1
+ - Cadena no aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+Pos: 4
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+Pos: 4
+Current state: q0
+Current char: 1
+ - Cadena no aceptada
+
+Cadena de prueba: 10
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+Cadena de prueba: 1010
+AFD a partir del AFN
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD directo
+Pos: 0
+Current state: S0
+Current char: 1
+Pos: 1
+Current state: S1
+Current char: 0
+Pos: 2
+Current state: S2
+Current char: 1
+Pos: 3
+Current state: S1
+Current char: 0
+ - Cadena aceptada
+
+AFD a partir del AFN minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+AFD directo minimizado
+Pos: 0
+Current state: q1
+Current char: 1
+Pos: 1
+Current state: q2
+Current char: 0
+Pos: 2
+Current state: q0
+Current char: 1
+Pos: 3
+Current state: q2
+Current char: 0
+ - Cadena aceptada
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+

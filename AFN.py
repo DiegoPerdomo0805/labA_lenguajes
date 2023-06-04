@@ -144,4 +144,5 @@ def visual_AFN(NFA, exp):
     return g.render('AFN', view=True, directory='./visual_results/')
 
 
-
+def simulation(NFA, cadena):
+    pass
