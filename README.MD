@@ -2,6 +2,8 @@
 
 [![Demostración de construcción](https://youtu.be/rp0O1JUzBJs)](https://youtu.be/rp0O1JUzBJs)
 
+[![Demostración de simulaciones](https://youtu.be/iJr61WyvArw)](https://youtu.be/iJr61WyvArw)
+
 ### Las únicas dos pruebas no exitosas en construcción directa son los dos siguientes:
 #### 1. (a|b)*a(a|b)(a|b)
 #### 2. (0|1)*0(0|1)(0|1)
